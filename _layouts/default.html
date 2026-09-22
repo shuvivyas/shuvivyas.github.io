@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{
+  --bg:#0f1117;--bg2:#181c25;--border:#252c3a;
+  --text:#e2e8f0;--muted:#64748b;--accent:#60a5fa;--tag-bg:#1e2535;
+}
+:root[data-theme="light"]{
+  --bg:#f8fafc;--bg2:#ffffff;--border:#e2e8f0;
+  --text:#1e293b;--muted:#64748b;--accent:#2563eb;--tag-bg:#eff6ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Inter",system-ui,sans-serif;
+  font-size:15px;line-height:1.7;
+  transition:background .2s,color .2s;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.wrap{display:flex;min-height:100vh;max-width:960px;margin:0 auto;padding:0 20px}
+
+.side{
+  width:180px;flex-shrink:0;position:sticky;top:0;height:100vh;
+  padding:48px 24px 48px 0;display:flex;flex-direction:column;
+  border-right:1px solid var(--border);
+}
+.side-name{font-weight:600;font-size:1rem;margin-bottom:4px}
+.side-name a{color:var(--text);text-decoration:none}
+.side-name a:hover{color:var(--accent)}
+.side-role{font-size:.8rem;color:var(--muted);margin-bottom:32px}
+.side nav{display:flex;flex-direction:column;gap:2px;flex:1}
+.side nav a{
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--muted);
+  padding:6px 0 6px 12px;border-left:2px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+.side nav a:hover{color:var(--text);text-decoration:none}
+.side nav a.active{color:var(--accent);border-left-color:var(--accent)}
+.side-links{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.side-links a{font-size:.78rem;color:var(--muted);border:0}
+.side-links a:hover{color:var(--accent);text-decoration:none}
+.toggle{
+  margin-top:16px;background:none;border:1px solid var(--border);
+  color:var(--muted);border-radius:6px;padding:6px 10px;font-size:.75rem;
+  cursor:pointer;font-family:"JetBrains Mono",monospace;text-align:left;
+  transition:color .15s,border-color .15s;
+}
+.toggle:hover{color:var(--text);border-color:var(--muted)}
+
+main{flex:1;padding:64px 0 100px 52px;max-width:640px}
+
+h1{font-size:1.5rem;font-weight:600;margin-bottom:8px}
+h2{
+  font-family:"JetBrains Mono",monospace;font-size:1rem;
+  font-weight:500;color:var(--accent);margin-bottom:6px;
+}
+.sec-line{height:1px;background:var(--border);margin-bottom:28px}
+
+/* post list */
+.post-list{list-style:none}
+.post-item{padding:16px 0;border-top:1px solid var(--border)}
+.post-item:first-child{border-top:0;padding-top:0}
+.post-item a{font-size:.95rem;font-weight:500;color:var(--text)}
+.post-item a:hover{color:var(--accent);text-decoration:none}
+.post-date{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--muted);margin-top:3px}
+.post-summary{font-size:.88rem;color:var(--muted);margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:.72rem;background:var(--tag-bg);color:var(--muted);padding:2px 8px;border-radius:4px;font-family:"JetBrains Mono",monospace}
+.empty{font-size:.9rem;color:var(--muted)}
+
+@media(max-width:700px){
+  .wrap{flex-direction:column;padding:0 16px}
+  .side{width:100%;height:auto;position:static;border-right:0;border-bottom:1px solid var(--border);padding:24px 0;flex-direction:row;flex-wrap:wrap;gap:12px;align-items:center}
+  .side nav{flex-direction:row;flex-wrap:wrap}
+  .side nav a{border-left:0;border-bottom:2px solid transparent;padding:4px 10px 4px 0}
+  .side nav a.active{border-left:0;border-bottom-color:var(--accent)}
+  .side-links{flex-direction:row;margin-top:0}
+  .toggle{margin-top:0}
+  main{padding:32px 0 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="side">
+    <div>
+      <div class="side-name"><a href="/">{{ site.title }}</a></div>
+      <div class="side-role">Cybersecurity</div>
+    </div>
+    <nav>
+      <a href="/" {% if page.url == "/" %}class="active"{% endif %}>home</a>
+      <a href="/blog" {% if page.url contains "blog" %}class="active"{% endif %}>journal</a>
+      <a href="/projects" {% if page.url contains "projects" %}class="active"{% endif %}>projects</a>
+    </nav>
+    <div class="side-links">
+      <a href="https://github.com/ArleyKev" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:you@example.com">Email</a>
+    </div>
+    <button class="toggle" id="themeBtn" onclick="toggleTheme()">☀ light</button>
+  </aside>
+  <main>
+    {{ content }}
+  </main>
+</div>
+<script>
+function toggleTheme(){
+  const html = document.documentElement;
+  const dark = html.getAttribute("data-theme") === "dark";
+  html.setAttribute("data-theme", dark ? "light" : "dark");
+  document.getElementById("themeBtn").textContent = dark ? "☾ dark" : "☀ light";
+}
+</script>
+</body>
+</html>
