@@ -1,0 +1,33 @@
+title: "Shuvi Vyas"
+description: "Cybersecurity portfolio and learning journal"
+timezone: Asia/Kolkata
+plugins:
+  - jekyll-feed
+
+collections:
+  journal:
+    output: true
+    permalink: /journal/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+  writeups:
+    output: true
+    permalink: /writeups/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: journal
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: writeups
+    values:
+      layout: post

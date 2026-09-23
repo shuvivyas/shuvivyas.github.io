@@ -1,136 +1,246 @@
+---
+layout: null
+---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Cybersecurity Portfolio</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shuvi Vyas Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="dark"]{
+  --bg:#0f1117;--bg2:#181c25;--border:#252c3a;
+  --text:#e2e8f0;--muted:#64748b;--accent:#60a5fa;--tag-bg:#1e2535;
+}
+:root[data-theme="light"]{
+  --bg:#f8fafc;--bg2:#ffffff;--border:#e2e8f0;
+  --text:#1e293b;--muted:#64748b;--accent:#2563eb;--tag-bg:#eff6ff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Inter",system-ui,sans-serif;
+  font-size:15px;line-height:1.7;
+  transition:background .2s,color .2s;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{display:flex;min-height:100vh;max-width:100%;margin:0 ;padding:0 20px}
+.side{
+  width:180px;flex-shrink:0;position:sticky;top:0;height:100vh;
+  padding:48px 24px 48px 0;display:flex;flex-direction:column;
+  border-right:1px solid var(--border);
+}
+.side-name{font-weight:600;font-size:1rem;margin-bottom:4px}
+.side-role{font-size:.8rem;color:var(--muted);margin-bottom:32px}
+.side nav{display:flex;flex-direction:column;gap:2px;flex:1}
+.side nav a{
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--muted);
+  padding:6px 0 6px 12px;border-left:2px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+.side nav a:hover{color:var(--text);text-decoration:none}
+.side nav a.active{color:var(--accent);border-left-color:var(--accent)}
+.side-links{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.side-links a{font-size:.78rem;color:var(--muted)}
+.side-links a:hover{color:var(--accent);text-decoration:none}
+.toggle{
+  margin-top:16px;background:none;border:1px solid var(--border);
+  color:var(--muted);border-radius:6px;padding:6px 10px;font-size:.75rem;
+  cursor:pointer;font-family:"JetBrains Mono",monospace;text-align:left;
+  transition:color .15s,border-color .15s;
+}
+.toggle:hover{color:var(--text);border-color:var(--muted)}
+main{flex:1;padding:64px 0 100px 52px;max-width:900px}
+section{margin-bottom:72px;scroll-margin-top:40px}
+h2{
+  font-family:"JetBrains Mono",monospace;font-size:1rem;
+  font-weight:500;color:var(--accent);margin-bottom:6px;
+}
+.sec-line{height:1px;background:var(--border);margin-bottom:24px}
+.about-name{font-size:1.8rem;font-weight:600;line-height:1.2;margin-bottom:8px}
+.about-role{font-family:"JetBrains Mono",monospace;font-size:.82rem;color:var(--accent);margin-bottom:16px}
+.about-text{color:var(--muted);font-size:.95rem}
+.post-list{list-style:none}
+.post-item{padding:16px 0;border-top:1px solid var(--border)}
+.post-item:first-child{border-top:0;padding-top:0}
+.post-item a.post-title{font-size:.95rem;font-weight:500;color:var(--text)}
+.post-item a.post-title:hover{color:var(--accent);text-decoration:none}
+.post-meta{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--muted);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.post-summary{font-size:.88rem;color:var(--muted);margin-top:4px}
+.diff{font-size:.7rem;padding:1px 6px;border-radius:3px;border:1px solid}
+.diff.easy{color:#4ade80;border-color:rgba(74,222,128,.3)}
+.diff.medium{color:#facc15;border-color:rgba(250,204,21,.3)}
+.diff.hard{color:#f87171;border-color:rgba(248,113,113,.3)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:.72rem;background:var(--tag-bg);color:var(--muted);padding:2px 8px;border-radius:4px;font-family:"JetBrains Mono",monospace}
+.cert{display:flex;gap:14px;align-items:baseline;padding:14px 0;border-top:1px solid var(--border)}
+.cert:first-child{border-top:0;padding-top:0}
+.cert-status{font-family:"JetBrains Mono",monospace;font-size:.72rem;flex:0 0 80px}
+.cert-status.done{color:#4ade80}
+.cert-status.wip{color:#facc15}
+.cert-name{font-size:.9rem;font-weight:500}
+.cert-who{font-size:.8rem;color:var(--muted);margin-top:2px}
+.empty{font-size:.9rem;color:var(--muted)}
+footer{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--muted);border-top:1px solid var(--border);padding-top:16px}
+@media(max-width:700px){
+  .wrap{flex-direction:column;padding:0 16px}
+  .side{width:100%;height:auto;position:static;border-right:0;border-bottom:1px solid var(--border);padding:24px 0;flex-direction:row;flex-wrap:wrap;gap:12px;align-items:center}
+  .side nav{flex-direction:row;flex-wrap:wrap}
+  .side nav a{border-left:0;border-bottom:2px solid transparent;padding:4px 10px 4px 0}
+  .side nav a.active{border-left:0;border-bottom-color:var(--accent)}
+  .side-links{flex-direction:row;margin-top:0}
+  .toggle{margin-top:0}
+  main{padding:32px 0 60px}
+}
+</style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="logo">Cybersecurity Portfolio</div>
+<div class="wrap">
+  <aside class="side">
+    <div>
+      <div class="side-name">Shuvi Vyas</div>
+      <div class="side-role">Cybersecurity</div>
+    </div>
+    <nav id="sidenav">
+      <a href="#about">About Me</a>
+      <a href="#journal">Journal</a>
+      <a href="#writeups">Writeups</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certifications</a>
+    </nav>
+    <div class="side-links">
+      <a href="https://github.com/shuvivyas" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/shuvi-vyas-3b4a2a27a/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:shuvivyas@gmail.com">Email</a>
+    </div>
+    <button class="toggle" id="themeBtn" onclick="toggleTheme()">☀ light</button>
+  </aside>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#journal">Cybersecurity Learning Journal</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
 
-  
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <p class="eyebrow">CYBERSECURITY • INFORMATION SECURITY • SOC</p>
-
-            <h1>Building My Cybersecurity Journey</h1>
-
-            <p class="hero-text">
-                A practical portfolio documenting my cybersecurity learning,
-                hands-on labs, security projects, CTFs, and technical research.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#projects" class="button">View Projects</a>
-                <a href="#journal" class="button secondary">Explore My Journey</a>
-            </div>
-        </div>
-    </section>
-
-  
     <section id="about">
-        <div class="section-container">
-            <p class="section-label">ABOUT</p>
-            <h2>About Me</h2>
-
-            <p>
-                I am building my career in cybersecurity with a focus on
-                Security Operations, threat detection, incident response,
-                IAM, vulnerability management, and practical security
-                engineering.
-            </p>
-
-            <p>
-                This portfolio documents what I learn and, more importantly,
-                how I apply that knowledge through hands-on projects,
-                security labs, CTFs, and investigations.
-            </p>
-        </div>
+      <div class="about-name">Shuvi Vyas</div>
+      <div class="about-role">Cybersecurity - SOC / Security Operations</div>
+      <p class="about-text">
+        My interest in cybersecurity started during my Information Security internship, where I got hands-on experience working with security processes and practices.
+        I’ve continued building on that experience beyond the workplace through hands-on labs, security projects, CTFs, and practical exercises. I’m particularly interested in security operations, threat detection, vulnerability management, and security engineering.
+        I use this portfolio to document what I’m learning, the projects I build, and the security work I explore along the way.
+      </p>
     </section>
-
 
     <section id="journal">
-        <div class="section-container">
-            <p class="section-label">LEARNING</p>
-            <h2>Cybersecurity Learning Journal</h2>
-
-            <p>
-                Notes and practical learning from my cybersecurity journey.
-            </p>
-
-            <div class="card-grid">
-
-                <article class="card">
-                    <h3>SOC & SIEM</h3>
-                    <p>
-                        Learning security monitoring, alert analysis,
-                        log investigation, and SIEM workflows.
-                    </p>
-                </article>
-
-            </div>
-        </div>
+      <h2>Journal</h2>
+      <div class="sec-line"></div>
+      {% assign journal_entries = site.journal | sort: 'date' | reverse %}
+      {% if journal_entries.size > 0 %}
+      <ul class="post-list">
+        {% for entry in journal_entries %}
+        <li class="post-item">
+          <a class="post-title" href="{{ entry.url }}">{{ entry.title }}</a>
+          <div class="post-meta">
+            <span>{{ entry.date | date: "%b %d, %Y" }}</span>
+          </div>
+          {% if entry.summary %}<div class="post-summary">{{ entry.summary }}</div>{% endif %}
+          {% if entry.tags %}
+          <div class="tags">{% for tag in entry.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">No entries yet.</p>
+      {% endif %}
     </section>
 
+    <section id="writeups">
+      <h2>Writeups</h2>
+      <div class="sec-line"></div>
+      {% assign writeup_entries = site.writeups | sort: 'date' | reverse %}
+      {% if writeup_entries.size > 0 %}
+      <ul class="post-list">
+        {% for entry in writeup_entries %}
+        <li class="post-item">
+          <a class="post-title" href="{{ entry.url }}">{{ entry.title }}</a>
+          <div class="post-meta">
+            {% if entry.platform %}<span>{{ entry.platform }}</span>{% endif %}
+            <span>{{ entry.date | date: "%b %d, %Y" }}</span>
+            {% if entry.difficulty %}<span class="diff {{ entry.difficulty | downcase }}">{{ entry.difficulty }}</span>{% endif %}
+          </div>
+          {% if entry.summary %}<div class="post-summary">{{ entry.summary }}</div>{% endif %}
+          {% if entry.tags %}
+          <div class="tags">{% for tag in entry.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">No writeups yet.</p>
+      {% endif %}
+    </section>
 
     <section id="projects">
-        <div class="section-container">
-            <p class="section-label">BUILD</p>
-            <h2>Projects</h2>
-
-            <div class="card-grid">
-
-                <article class="card project-card">
-                    <h3>IAM Policy Analyzer</h3>
-                    <p>
-                        A security-focused tool for identifying excessive
-                        permissions in IAM policies and suggesting safer
-                        configurations.
-                    </p>
-                    <span>FastAPI • Python • Streamlit • IAM</span>
-                </article>
-
-                <article class="card project-card">
-                    <h3>JWT Authentication Security API</h3>
-                    <p>
-                        A security demonstration covering authentication,
-                        password hashing, JWT tokens, and SQL injection risks.
-                    </p>
-                    <span>Python • Flask • JWT • bcrypt</span>
-                </article>
-
-                <article class="card project-card">
-                    <h3>SIEM Home Lab</h3>
-                    <p>
-                        A Windows-based security lab for collecting logs,
-                        creating detections, and investigating security events.
-                    </p>
-                    <span>Wazuh • Sysmon • Windows • MITRE ATT&CK</span>
-                </article>
-
-            </div>
-        </div>
+      <h2>Projects</h2>
+      <div class="sec-line"></div>
+      {% assign project_entries = site.projects | sort: 'date' | reverse %}
+      {% if project_entries.size > 0 %}
+      <ul class="post-list">
+        {% for entry in project_entries %}
+        <li class="post-item">
+          <a class="post-title" href="{{ entry.url }}">{{ entry.title }}</a>
+          <div class="post-meta">
+            <span>{{ entry.date | date: "%b %d, %Y" }}</span>
+          </div>
+          {% if entry.summary %}<div class="post-summary">{{ entry.summary }}</div>{% endif %}
+          {% if entry.tags %}
+          <div class="tags">{% for tag in entry.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="empty">No projects yet.</p>
+      {% endif %}
     </section>
 
+    <section id="certs">
+      <h2>Certifications</h2>
+      <div class="sec-line"></div>
+      <p class="empty">Coming soon.</p>
+      <!--
+      <div class="cert">
+        <span class="cert-status done">Completed</span>
+        <div>
+          <div class="cert-name">Cert Name Here</div>
+          <div class="cert-who">Issuer · 2026</div>
+        </div>
+      </div>
+      -->
+    </section>
 
-    <footer>
-        <p>© 2026 Cybersecurity Portfolio</p>
-    </footer>
+    <footer>Shuvi Vyas· {{ site.time | date: "%Y" }}</footer>
 
+  </main>
+</div>
+<script>
+function toggleTheme(){
+  const html = document.documentElement;
+  const dark = html.getAttribute("data-theme")==="dark";
+  html.setAttribute("data-theme",dark?"light":"dark");
+  document.getElementById("themeBtn").textContent=dark?"☾ dark":"☀ light";
+}
+const navLinks=[...document.querySelectorAll('#sidenav a')];
+const spy=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting)
+      navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id));
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('main section').forEach(s=>spy.observe(s));
+</script>
 </body>
 </html>
