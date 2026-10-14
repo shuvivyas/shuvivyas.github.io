@@ -60,8 +60,6 @@ net user testuser P@ssw0rd123! /add
 I then opened Threat Hunting → Events in the Wazuh dashboard and filtered the results using `rule.id: 100100`.
 The alert appeared with my custom description, severity level 10, and MITRE ATT&CK mapping. This confirmed that the custom rule was working as expected and that Wazuh was detecting the account creation event.
 
-![Wazuh alert for rule 100100](/assets/images/wazuh-alert.png)
-
 ## 6. Key Commands / Payloads / Tools
 
 **Windows VM (elevated prompt)**
