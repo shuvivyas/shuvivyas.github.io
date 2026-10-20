@@ -1,4 +1,12 @@
-# In making of Security Log Analyzer
+---
+layout: post
+title: "My Log Analyzer Only Knew One Attack"
+date: 2026-06-15
+category: journal
+summary: "My first log analyzer only caught brute force because my test data only had one username. Learning about password spraying made me rebuild it as separate modules."
+tags: [python, security, log-analysis, brute-force, password-spraying, detection]
+---
+# My Log Analyzer Only Knew One Attack
 
 ## 1. What was the issue or challenge?
 
