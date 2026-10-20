@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Security Log Analyzer"
-date: 2026-06-03
+date: 2026-06-04
 category: project
 summary: "A Python tool that reads auth logs and flags brute force and password spraying attempts, saving alerts as JSON for triage."
 ---
