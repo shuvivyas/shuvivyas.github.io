@@ -20,7 +20,7 @@ This portfolio focuses on my learning and hands-on work in cybersecurity, with a
 ## What's Inside
 
 ### Cybersecurity Journal
-Notes and writeups from my cybersecurity learning journey.
+Notes and writeups from my cybersecurity learning journey
 
 ### Writeups
 Writeups documenting challenges, techniques, and lessons learned from CTF platforms.
